@@ -10,6 +10,7 @@ namespace SpaDay6.Controllers
 {
     public class SpaController : Controller
     {
+        
         public bool CheckSkinType(string skinType, string facialType)
         {
 
@@ -43,6 +44,8 @@ namespace SpaDay6.Controllers
         [Route("/spa")]
         public IActionResult Menu(string name, string skintype, string manipedi)
         {
+            ViewBag.name = name;
+            ViewBag.skintype = skintype;
             List<string> facials = new List<string>()
             {
                 "Microdermabrasion", "Hydrofacial", "Rejuvenating", "Enzyme Peel"
@@ -55,6 +58,8 @@ namespace SpaDay6.Controllers
                 {
                     appropriateFacials.Add(facials[i]);
                 }
+                ViewBag.appropriateFacials = appropriateFacials;
+
             }
             return View();
         }
